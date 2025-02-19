@@ -5,11 +5,11 @@ import CardRanking from "@/components/card-ranking";
 
 export default function Ranking() {
 	return (
-		<div className="space-y-5 w-full max-w-[550px]">
+		<section className="space-y-6">
 			<h2 className="font-heading font-semibold text-gray-200 text-xl leading-none">
 				Ranking de indicações
 			</h2>
-			<div className="space-y-4">
+			<div className="space-y-4 grid grid-rows-3">
 				<CardRanking
 					position="1º"
 					medal={medalGold}
@@ -29,6 +29,6 @@ export default function Ranking() {
 					amount={"975"}
 				/>
 			</div>
-		</div>
+		</section>
 	);
 }

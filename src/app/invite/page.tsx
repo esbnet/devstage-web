@@ -5,10 +5,12 @@ import Ranking from "./ranking";
 import Stats from "./stats";
 
 export default function InvitePage() {
+	const inviteLink = "https://www.google.com";
 	return (
 		<div className="flex md:flex-row flex-col justify-between items-center gap-16 min-h-dvh">
 			<div className="flex flex-col gap-10 w-full max-w-[550px]">
 				<Image src={logo} alt="Logo" width={108.5} height={30} />
+
 				<div className="space-y-2">
 					<h1 className="font-heading font-semibold text-gray-100 text-4xl leading-none">
 						Inscrição confirmada!
@@ -27,13 +29,14 @@ export default function InvitePage() {
 							exclusivos! É só compartilhar o link abaixo e acompanhar as
 							inscrições:
 						</p>
-						<InviteLinkInput />
+						<InviteLinkInput inviteLink={inviteLink} />
 						<Stats />
 					</div>
 				</div>
 			</div>
-
-			<Ranking />
+			<div className="space-y-7 w-full max-w-[550px] h-full">
+				<Ranking />
+			</div>
 		</div>
 	);
 }
