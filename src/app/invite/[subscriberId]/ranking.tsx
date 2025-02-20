@@ -1,9 +1,11 @@
+import CardRanking from "@/components/card-ranking";
+import { getRanking } from "@/http/api";
 import medalCooper from "@/assets/medal-cooper.svg";
 import medalGold from "@/assets/medal-gold.svg";
 import medalSilver from "@/assets/medal-silver.svg";
-import CardRanking from "@/components/card-ranking";
 
-export default function Ranking() {
+export default async function Ranking() {
+	const { ranking } = await getRanking();
 	return (
 		<section className="space-y-6">
 			<h2 className="font-heading font-semibold text-gray-200 text-xl leading-none">
@@ -13,20 +15,20 @@ export default function Ranking() {
 				<CardRanking
 					position="1º"
 					medal={medalGold}
-					name="Rodrigo Gonçalves"
-					amount={"1.128"}
+					name={ranking.length > 0 ? ranking[0].name : "Não há inscritos"}
+					amount={ranking.length > 0 ? ranking[0].score : 0}
 				/>
 				<CardRanking
 					position="2º"
 					medal={medalSilver}
-					name="Maria da Silva"
-					amount={"928"}
+					name={ranking.length > 1 ? ranking[1].name : "Não há rankiado"}
+					amount={ranking.length > 1 ? ranking[1].score : 0}
 				/>
 				<CardRanking
 					position="3º"
 					medal={medalCooper}
-					name="João da Silva"
-					amount={"975"}
+					name={ranking.length > 2 ? ranking[2].name : "Não há rankiado"}
+					amount={ranking.length > 2 ? ranking[2].score : 0}
 				/>
 			</div>
 		</section>

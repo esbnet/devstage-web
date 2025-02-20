@@ -1,11 +1,20 @@
-import logo from "@/assets/logo.svg";
 import Image from "next/image";
 import InviteLinkInput from "./invite-link-input";
 import Ranking from "./ranking";
 import Stats from "./stats";
+import logo from "@/assets/logo.svg";
 
-export default function InvitePage() {
-	const inviteLink = "https://www.google.com";
+interface InvitePageProps {
+	params: Promise<{
+		subscriberId: string;
+	}>;
+}
+
+export default async function InvitePage(props: InvitePageProps) {
+	const { subscriberId } = await props.params;
+
+	const inviteLink = `${process.env.NEXT_PUBLIC_APP_URL}/invites/${subscriberId}`;
+
 	return (
 		<div className="flex md:flex-row flex-col justify-between items-center gap-16 min-h-dvh">
 			<div className="flex flex-col gap-10 w-full max-w-[550px]">
@@ -30,7 +39,7 @@ export default function InvitePage() {
 							inscrições:
 						</p>
 						<InviteLinkInput inviteLink={inviteLink} />
-						<Stats />
+						<Stats subscriberId={subscriberId} />
 					</div>
 				</div>
 			</div>

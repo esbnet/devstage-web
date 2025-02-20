@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 interface CardProps {
-	amount: string;
+	amount: number;
 	name: string;
 	medal: string;
 	position: string;
